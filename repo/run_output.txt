@@ -1,0 +1,115 @@
+Shape: (569, 32)
+diagnosis
+Benign       357
+Malignant    212
+Name: count, dtype: int64
+Missing values: 0
+Duplicate rows: 0
+
+Top correlations with target (0=malignant,1=benign):
+ worst concave points     -0.794
+worst perimeter          -0.783
+mean concave points      -0.777
+worst radius             -0.776
+mean perimeter           -0.743
+worst area               -0.734
+mean radius              -0.730
+mean area                -0.709
+symmetry error            0.007
+texture error             0.008
+mean fractal dimension    0.013
+smoothness error          0.067
+dtype: float64
+
+Train: (455, 30) Test: (114, 30)
+Train class counts: [170 285] Test class counts: [42 72]
+
+TEST RESULTS
+                       Accuracy  Precision  Recall      F1  ROC-AUC
+Model                                                             
+Logistic Regression     0.9825     0.9861  0.9861  0.9861   0.9954
+Decision Tree           0.9123     0.9559  0.9028  0.9286   0.9157
+Random Forest           0.9561     0.9589  0.9722  0.9655   0.9932
+KNN (k=5)               0.9561     0.9589  0.9722  0.9655   0.9788
+SVM (RBF)               0.9825     0.9861  0.9861  0.9861   0.9950
+Gaussian Naive Bayes    0.9298     0.9444  0.9444  0.9444   0.9868
+
+ Logistic Regression confusion matrix [[TN FP][FN TP]]: [[41, 1], [1, 71]]
+
+ Decision Tree confusion matrix [[TN FP][FN TP]]: [[39, 3], [7, 65]]
+
+ Random Forest confusion matrix [[TN FP][FN TP]]: [[39, 3], [2, 70]]
+
+ KNN (k=5) confusion matrix [[TN FP][FN TP]]: [[39, 3], [2, 70]]
+
+ SVM (RBF) confusion matrix [[TN FP][FN TP]]: [[41, 1], [1, 71]]
+
+ Gaussian Naive Bayes confusion matrix [[TN FP][FN TP]]: [[38, 4], [4, 68]]
+
+Classification report (SVM):
+               precision    recall  f1-score   support
+
+   Malignant       0.98      0.98      0.98        42
+      Benign       0.99      0.99      0.99        72
+
+    accuracy                           0.98       114
+   macro avg       0.98      0.98      0.98       114
+weighted avg       0.98      0.98      0.98       114
+
+
+5-FOLD CV
+                         Mean     Std
+Model                               
+Logistic Regression   0.9737  0.0166
+Decision Tree         0.9104  0.0279
+Random Forest         0.9543  0.0102
+KNN (k=5)             0.9631  0.0179
+SVM (RBF)             0.9772  0.0163
+Gaussian Naive Bayes  0.9297  0.0199
+Logistic Regression [0.9737, 0.9474, 0.9649, 0.9912, 0.9912]
+Decision Tree [0.9298, 0.8684, 0.886, 0.9386, 0.9292]
+Random Forest [0.9649, 0.9386, 0.9561, 0.9474, 0.9646]
+KNN (k=5) [0.9825, 0.9474, 0.9386, 0.9825, 0.9646]
+SVM (RBF) [0.9912, 0.9474, 0.9737, 0.9912, 0.9823]
+Gaussian Naive Bayes [0.9561, 0.9123, 0.9298, 0.9035, 0.9469]
+
+KNN accuracy by k: {1: 0.9386, 2: 0.9298, 3: 0.9825, 4: 0.9474, 5: 0.9561, 6: 0.9561, 7: 0.9737, 8: 0.9737, 9: 0.9737, 10: 0.9649, 11: 0.9737, 12: 0.9737, 13: 0.9737, 14: 0.9649, 15: 0.9737, 16: 0.9737, 17: 0.9825, 18: 0.9825, 19: 0.9737, 20: 0.9737, 21: 0.9649, 22: 0.9649, 23: 0.9561, 24: 0.9649, 25: 0.9649}
+
+Depth train acc: [0.9231, 0.9582, 0.9758, 0.9868, 0.9934, 0.9978, 1.0, 1.0, 1.0, 1.0]
+Depth test acc: [0.9211, 0.8947, 0.9386, 0.9386, 0.9211, 0.9123, 0.9123, 0.9123, 0.9123, 0.9123]
+
+Top 10 RF importances:
+ worst perimeter         0.1331
+worst area              0.1281
+worst concave points    0.1081
+mean concave points     0.0944
+worst radius            0.0906
+mean radius             0.0587
+mean perimeter          0.0552
+mean area               0.0499
+mean concavity          0.0462
+worst concavity         0.0354
+dtype: float64
+
+PCA explained variance (first 5): [0.4427, 0.1897, 0.0939, 0.066, 0.055]
+Components for 95% variance: 10
+
+Best SVM params: {'C': 0.1, 'gamma': 'scale', 'kernel': 'linear'} CV acc: 0.9802
+Tuned SVM test acc: 0.9825 Recall: 0.9861 Precision: 0.9861 F1: 0.9861
+Tuned SVM confusion matrix: [[41, 1], [1, 71]]
+Sample 1: actual=Malignant predicted=Malignant P(malignant)=1.000 P(benign)=0.000
+Sample 2: actual=Benign predicted=Benign P(malignant)=0.000 P(benign)=1.000
+Sample 3: actual=Malignant predicted=Malignant P(malignant)=0.987 P(benign)=0.013
+
+Descriptive stats (mean features):
+                            mean      std      min       max
+mean radius              14.127    3.524    6.981    28.110
+mean texture             19.290    4.301    9.710    39.280
+mean perimeter           91.969   24.299   43.790   188.500
+mean area               654.889  351.914  143.500  2501.000
+mean smoothness           0.096    0.014    0.053     0.163
+mean compactness          0.104    0.053    0.019     0.345
+mean concavity            0.089    0.080    0.000     0.427
+mean concave points       0.049    0.039    0.000     0.201
+mean symmetry             0.181    0.027    0.106     0.304
+mean fractal dimension    0.063    0.007    0.050     0.097
